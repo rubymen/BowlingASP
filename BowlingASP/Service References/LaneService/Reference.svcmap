@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="9022b385-646c-4b11-95c0-a146f6731f9c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://bowling.noip.me/LaneService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="LaneService.xsd" MetadataType="Schema" ID="3fd69d6e-b540-429f-949e-e802ae42f224" SourceId="1" SourceUrl="http://bowling.noip.me/LaneService.svc?xsd=xsd0" />
+    <MetadataFile FileName="LaneService1.xsd" MetadataType="Schema" ID="f6c46c32-a284-4583-857f-7c78a34239d8" SourceId="1" SourceUrl="http://bowling.noip.me/LaneService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceLane.wsdl" MetadataType="Wsdl" ID="8826a45c-99e9-46e2-985a-f8ff5fd32aaa" SourceId="1" SourceUrl="http://bowling.noip.me/LaneService.svc?wsdl" />
+    <MetadataFile FileName="LaneService2.xsd" MetadataType="Schema" ID="75aa2440-46ae-46d4-80bb-8464d668d148" SourceId="1" SourceUrl="http://bowling.noip.me/LaneService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

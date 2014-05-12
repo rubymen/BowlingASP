@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ServicePlayer" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://bowling.noip.me/PlayerService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://bowling.noip.me/PlayerService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://bowling.noip.me/PlayerService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/BowlingService.Business" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IServicePlayer_createGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:createGame" />
+  </wsdl:message>
+  <wsdl:message name="IServicePlayer_createGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createGameResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePlayer_addPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:addPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IServicePlayer_addPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePlayer_deletePlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:deletePlayer" />
+  </wsdl:message>
+  <wsdl:message name="IServicePlayer_deletePlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:deletePlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePlayer_find_InputMessage">
+    <wsdl:part name="parameters" element="tns:find" />
+  </wsdl:message>
+  <wsdl:message name="IServicePlayer_find_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePlayer_findAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:findAll" />
+  </wsdl:message>
+  <wsdl:message name="IServicePlayer_findAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServicePlayer_findGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:findGame" />
+  </wsdl:message>
+  <wsdl:message name="IServicePlayer_findGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:findGameResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IServicePlayer">
+    <wsdl:operation name="createGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePlayer/createGame" message="tns:IServicePlayer_createGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePlayer/createGameResponse" message="tns:IServicePlayer_createGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="addPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePlayer/addPlayer" message="tns:IServicePlayer_addPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePlayer/addPlayerResponse" message="tns:IServicePlayer_addPlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="deletePlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePlayer/deletePlayer" message="tns:IServicePlayer_deletePlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePlayer/deletePlayerResponse" message="tns:IServicePlayer_deletePlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="find">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePlayer/find" message="tns:IServicePlayer_find_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePlayer/findResponse" message="tns:IServicePlayer_find_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePlayer/findAll" message="tns:IServicePlayer_findAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePlayer/findAllResponse" message="tns:IServicePlayer_findAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="findGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePlayer/findGame" message="tns:IServicePlayer_findGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePlayer/findGameResponse" message="tns:IServicePlayer_findGame_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IServicePlayer" type="tns:IServicePlayer">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="createGame">
+      <soap:operation soapAction="http://tempuri.org/IServicePlayer/createGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPlayer">
+      <soap:operation soapAction="http://tempuri.org/IServicePlayer/addPlayer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deletePlayer">
+      <soap:operation soapAction="http://tempuri.org/IServicePlayer/deletePlayer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="find">
+      <soap:operation soapAction="http://tempuri.org/IServicePlayer/find" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAll">
+      <soap:operation soapAction="http://tempuri.org/IServicePlayer/findAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findGame">
+      <soap:operation soapAction="http://tempuri.org/IServicePlayer/findGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServicePlayer">
+    <wsdl:port name="BasicHttpBinding_IServicePlayer" binding="tns:BasicHttpBinding_IServicePlayer">
+      <soap:address location="http://bowling.noip.me/PlayerService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

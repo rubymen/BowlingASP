@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="8a5a6aa8-b7db-47e7-8a7f-9679b309dc6a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://bowling.noip.me/PlayerService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServicePlayer.wsdl" MetadataType="Wsdl" ID="a1f9d341-e8d2-4a51-bfc2-ecd59b549747" SourceId="1" SourceUrl="http://bowling.noip.me/PlayerService.svc?wsdl" />
+    <MetadataFile FileName="PlayerService.xsd" MetadataType="Schema" ID="16f9ca58-0fda-41b1-8f4c-d096c6244e1f" SourceId="1" SourceUrl="http://bowling.noip.me/PlayerService.svc?xsd=xsd0" />
+    <MetadataFile FileName="PlayerService1.xsd" MetadataType="Schema" ID="e37f5312-dcef-4a26-84fa-0173c1310df1" SourceId="1" SourceUrl="http://bowling.noip.me/PlayerService.svc?xsd=xsd1" />
+    <MetadataFile FileName="PlayerService2.xsd" MetadataType="Schema" ID="4c882e8b-9b9f-49e9-afea-52831d1b01d0" SourceId="1" SourceUrl="http://bowling.noip.me/PlayerService.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

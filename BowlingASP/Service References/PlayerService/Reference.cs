@@ -661,6 +661,12 @@ namespace BowlingASP.PlayerService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePlayer/findGame", ReplyAction="http://tempuri.org/IServicePlayer/findGameResponse")]
         System.Threading.Tasks.Task<BowlingASP.PlayerService.game> findGameAsync(string id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePlayer/updatePlayer", ReplyAction="http://tempuri.org/IServicePlayer/updatePlayerResponse")]
+        void updatePlayer(BowlingASP.PlayerService.player p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicePlayer/updatePlayer", ReplyAction="http://tempuri.org/IServicePlayer/updatePlayerResponse")]
+        System.Threading.Tasks.Task updatePlayerAsync(BowlingASP.PlayerService.player p);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -736,6 +742,14 @@ namespace BowlingASP.PlayerService {
         
         public System.Threading.Tasks.Task<BowlingASP.PlayerService.game> findGameAsync(string id) {
             return base.Channel.findGameAsync(id);
+        }
+        
+        public void updatePlayer(BowlingASP.PlayerService.player p) {
+            base.Channel.updatePlayer(p);
+        }
+        
+        public System.Threading.Tasks.Task updatePlayerAsync(BowlingASP.PlayerService.player p) {
+            return base.Channel.updatePlayerAsync(p);
         }
     }
 }

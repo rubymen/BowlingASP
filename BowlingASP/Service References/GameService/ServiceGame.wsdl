@@ -13,6 +13,12 @@
   <wsdl:message name="IServiceGame_assignToLane_OutputMessage">
     <wsdl:part name="parameters" element="tns:assignToLaneResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceGame_createGame_InputMessage">
+    <wsdl:part name="parameters" element="tns:createGame" />
+  </wsdl:message>
+  <wsdl:message name="IServiceGame_createGame_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createGameResponse" />
+  </wsdl:message>
   <wsdl:message name="IServiceGame_findAllfrom24H_InputMessage">
     <wsdl:part name="parameters" element="tns:findAllfrom24H" />
   </wsdl:message>
@@ -31,10 +37,26 @@
   <wsdl:message name="IServiceGame_findAll_OutputMessage">
     <wsdl:part name="parameters" element="tns:findAllResponse" />
   </wsdl:message>
+  <wsdl:message name="IServiceGame_addPlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:addPlayer" />
+  </wsdl:message>
+  <wsdl:message name="IServiceGame_addPlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:addPlayerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IServiceGame_updateState_InputMessage">
+    <wsdl:part name="parameters" element="tns:updateState" />
+  </wsdl:message>
+  <wsdl:message name="IServiceGame_updateState_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updateStateResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServiceGame">
     <wsdl:operation name="assignToLane">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceGame/assignToLane" message="tns:IServiceGame_assignToLane_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceGame/assignToLaneResponse" message="tns:IServiceGame_assignToLane_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createGame">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceGame/createGame" message="tns:IServiceGame_createGame_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceGame/createGameResponse" message="tns:IServiceGame_createGame_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="findAllfrom24H">
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceGame/findAllfrom24H" message="tns:IServiceGame_findAllfrom24H_InputMessage" />
@@ -48,11 +70,28 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IServiceGame/findAll" message="tns:IServiceGame_findAll_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServiceGame/findAllResponse" message="tns:IServiceGame_findAll_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="addPlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceGame/addPlayer" message="tns:IServiceGame_addPlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceGame/addPlayerResponse" message="tns:IServiceGame_addPlayer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updateState">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServiceGame/updateState" message="tns:IServiceGame_updateState_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServiceGame/updateStateResponse" message="tns:IServiceGame_updateState_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServiceGame" type="tns:IServiceGame">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="assignToLane">
       <soap:operation soapAction="http://tempuri.org/IServiceGame/assignToLane" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createGame">
+      <soap:operation soapAction="http://tempuri.org/IServiceGame/createGame" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -80,6 +119,24 @@
     </wsdl:operation>
     <wsdl:operation name="findAll">
       <soap:operation soapAction="http://tempuri.org/IServiceGame/findAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addPlayer">
+      <soap:operation soapAction="http://tempuri.org/IServiceGame/addPlayer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateState">
+      <soap:operation soapAction="http://tempuri.org/IServiceGame/updateState" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

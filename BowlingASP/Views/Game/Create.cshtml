@@ -1,24 +1,40 @@
-﻿@model BowlingASP.GameService.ServiceGameClient
+﻿@model BowlingASP.GameService.player
 
 @{
     ViewBag.Title = "Création";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Crééer une partie</h2>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+<script>
+    var i = 1;
+    var addInput = function () {
+        i++
+        $(".form-group").append('<div class="col-md-12"><label for="Pseudo'+i+'">Joueur '+i+'</label><input class="text-box single-line form-control" id="Pseudo' + i + '" name="Pseudo' + i + '" type="text" value="" /><br /></div>');
+    };
 
-    <div class="editor-label">
-        @Html.LabelFor(model => model.State)
-    </div>
-    <div class="editor-field">
-        @Html.EditorFor(model => model.State)
-        @Html.ValidationMessageFor(model => model.State)
-    </div>
-    <p>
-        <input type="submit" value="Créer" />
-    </p>
-}
+    var submitForm = function () {
+        if (document.getElementsByName("Pseudo" + i)[0].value != "") {
+            document.getElementById("form-id").submit();
+        } else {
+            alert("Renseigne les pseudos des joueurs !");
+        }
+    };
+</script>
+
+<div class="container" id="container">
+    <h2>Créer une partie</h2>
+    @using (Html.BeginForm("Create", "Game", FormMethod.Post, new { id = "form-id" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <div class="form-group">
+            <div class="col-md-12">
+                <label for="Pseudo1">Joueur 1</label>
+                <input class="text-box single-line form-control" id="Pseudo1" name="Pseudo1" type="text" value="" /><br />
+            </div>
+        </div>
+
+        <input type="button" value="Ajouter un joueur" onclick="addInput()" class="btn btn-success" />
+        <input type="button" value="Créer" onclick="submitForm()" class="btn btn-success" />
+    }
+</div>

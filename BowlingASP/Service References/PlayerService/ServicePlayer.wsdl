@@ -43,6 +43,12 @@
   <wsdl:message name="IServicePlayer_findGame_OutputMessage">
     <wsdl:part name="parameters" element="tns:findGameResponse" />
   </wsdl:message>
+  <wsdl:message name="IServicePlayer_updatePlayer_InputMessage">
+    <wsdl:part name="parameters" element="tns:updatePlayer" />
+  </wsdl:message>
+  <wsdl:message name="IServicePlayer_updatePlayer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:updatePlayerResponse" />
+  </wsdl:message>
   <wsdl:portType name="IServicePlayer">
     <wsdl:operation name="createGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicePlayer/createGame" message="tns:IServicePlayer_createGame_InputMessage" />
@@ -67,6 +73,10 @@
     <wsdl:operation name="findGame">
       <wsdl:input wsaw:Action="http://tempuri.org/IServicePlayer/findGame" message="tns:IServicePlayer_findGame_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IServicePlayer/findGameResponse" message="tns:IServicePlayer_findGame_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="updatePlayer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IServicePlayer/updatePlayer" message="tns:IServicePlayer_updatePlayer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IServicePlayer/updatePlayerResponse" message="tns:IServicePlayer_updatePlayer_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IServicePlayer" type="tns:IServicePlayer">
@@ -118,6 +128,15 @@
     </wsdl:operation>
     <wsdl:operation name="findGame">
       <soap:operation soapAction="http://tempuri.org/IServicePlayer/findGame" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePlayer">
+      <soap:operation soapAction="http://tempuri.org/IServicePlayer/updatePlayer" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

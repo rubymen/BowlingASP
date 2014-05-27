@@ -1,7 +1,7 @@
 ﻿@model BowlingASP.GameService.player
 
 @{
-    ViewBag.Title = "Création";
+    ViewBag.Title = "Création d'une partie";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -21,8 +21,10 @@
     };
 </script>
 
-<div class="container" id="container">
+<div class="container">
     <h2>Créer une partie</h2>
+    @Html.ActionLink("Retour", "Index", "Game", null, new { @class = "btn btn-default" })
+
     @using (Html.BeginForm("Create", "Game", FormMethod.Post, new { id = "form-id" }))
     {
         @Html.AntiForgeryToken()
@@ -34,7 +36,7 @@
             </div>
         </div>
 
-        <input type="button" value="Ajouter un joueur" onclick="addInput()" class="btn btn-success" />
-        <input type="button" value="Créer" onclick="submitForm()" class="btn btn-success" />
+        <input type="button" value="Ajouter un joueur" onclick="addInput()" class="btn btn-default" />
+        <input type="button" value="Créer une partie" onclick="submitForm()" class="btn btn-success pull-right" />
     }
 </div>

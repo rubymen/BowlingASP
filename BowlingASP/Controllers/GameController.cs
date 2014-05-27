@@ -21,9 +21,36 @@ namespace BowlingASP.Controllers
 
         public ActionResult Create()
         {
-            GameService.ServiceGameClient client = new GameService.ServiceGameClient();
-            PlayerService.ServicePlayerClient clientPlayer = new PlayerService.ServicePlayerClient();
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Create(FormCollection collection)
+        {
+            try
+            {
+                GameService.ServiceGameClient client = new GameService.ServiceGameClient();
+                GameService.game game = client.createGame();
+                for (int i = 1; i < collection.Count; i++)
+                {
+                    String name = "Pseudo" + i;
+                    String playerPseudo = collection[name];
+                    if (playerPseudo != "")
+                    {
+                        GameService.player player = new GameService.player();
+                        player.Pseudo = playerPseudo;
+                        client.addPlayer(game.Id.ToString(), player);
+                    } else {
+                        return View();
+                    }
+                }
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
     }
 }

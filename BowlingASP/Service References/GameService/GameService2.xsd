@@ -13,6 +13,18 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="createGame">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createGameResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BowlingService.Business" minOccurs="0" name="createGameResult" nillable="true" type="q1:game" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="findAllfrom24H">
     <xs:complexType>
       <xs:sequence />
@@ -21,7 +33,7 @@
   <xs:element name="findAllfrom24HResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/BowlingService.Business" minOccurs="0" name="findAllfrom24HResult" nillable="true" type="q1:ArrayOfgame" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BowlingService.Business" minOccurs="0" name="findAllfrom24HResult" nillable="true" type="q2:ArrayOfgame" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -35,7 +47,7 @@
   <xs:element name="findResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/BowlingService.Business" minOccurs="0" name="findResult" nillable="true" type="q2:game" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BowlingService.Business" minOccurs="0" name="findResult" nillable="true" type="q3:game" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -49,8 +61,34 @@
   <xs:element name="findAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/BowlingService.Business" minOccurs="0" name="findAllResult" nillable="true" type="q3:ArrayOfgame" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/BowlingService.Business" minOccurs="0" name="findAllResult" nillable="true" type="q4:ArrayOfgame" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addPlayer">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/BowlingService.Business" minOccurs="0" name="p" nillable="true" type="q5:player" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="addPlayerResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateState">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="state" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="updateStateResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

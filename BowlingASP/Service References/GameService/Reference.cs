@@ -632,6 +632,12 @@ namespace BowlingASP.GameService {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceGame/assignToLane", ReplyAction="http://tempuri.org/IServiceGame/assignToLaneResponse")]
         System.Threading.Tasks.Task assignToLaneAsync(string id);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceGame/createGame", ReplyAction="http://tempuri.org/IServiceGame/createGameResponse")]
+        BowlingASP.GameService.game createGame();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceGame/createGame", ReplyAction="http://tempuri.org/IServiceGame/createGameResponse")]
+        System.Threading.Tasks.Task<BowlingASP.GameService.game> createGameAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceGame/findAllfrom24H", ReplyAction="http://tempuri.org/IServiceGame/findAllfrom24HResponse")]
         System.Collections.Generic.List<BowlingASP.GameService.game> findAllfrom24H();
         
@@ -649,6 +655,18 @@ namespace BowlingASP.GameService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceGame/findAll", ReplyAction="http://tempuri.org/IServiceGame/findAllResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<BowlingASP.GameService.game>> findAllAsync(string number);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceGame/addPlayer", ReplyAction="http://tempuri.org/IServiceGame/addPlayerResponse")]
+        void addPlayer(string id, BowlingASP.GameService.player p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceGame/addPlayer", ReplyAction="http://tempuri.org/IServiceGame/addPlayerResponse")]
+        System.Threading.Tasks.Task addPlayerAsync(string id, BowlingASP.GameService.player p);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceGame/updateState", ReplyAction="http://tempuri.org/IServiceGame/updateStateResponse")]
+        void updateState(string id, string state);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceGame/updateState", ReplyAction="http://tempuri.org/IServiceGame/updateStateResponse")]
+        System.Threading.Tasks.Task updateStateAsync(string id, string state);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -686,6 +704,14 @@ namespace BowlingASP.GameService {
             return base.Channel.assignToLaneAsync(id);
         }
         
+        public BowlingASP.GameService.game createGame() {
+            return base.Channel.createGame();
+        }
+        
+        public System.Threading.Tasks.Task<BowlingASP.GameService.game> createGameAsync() {
+            return base.Channel.createGameAsync();
+        }
+        
         public System.Collections.Generic.List<BowlingASP.GameService.game> findAllfrom24H() {
             return base.Channel.findAllfrom24H();
         }
@@ -708,6 +734,22 @@ namespace BowlingASP.GameService {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<BowlingASP.GameService.game>> findAllAsync(string number) {
             return base.Channel.findAllAsync(number);
+        }
+        
+        public void addPlayer(string id, BowlingASP.GameService.player p) {
+            base.Channel.addPlayer(id, p);
+        }
+        
+        public System.Threading.Tasks.Task addPlayerAsync(string id, BowlingASP.GameService.player p) {
+            return base.Channel.addPlayerAsync(id, p);
+        }
+        
+        public void updateState(string id, string state) {
+            base.Channel.updateState(id, state);
+        }
+        
+        public System.Threading.Tasks.Task updateStateAsync(string id, string state) {
+            return base.Channel.updateStateAsync(id, state);
         }
     }
 }

@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row">
     <h2>Parties</h2>
-    @Html.ActionLink("Créer une partie", "Create", "Game", new { @class = "btn btn-success" })
+    @Html.ActionLink("Créer une partie", "Create", "Game", null, new { @class = "btn btn-success" })
 
         <table class="table table-hover">
             <thead>
@@ -33,7 +33,7 @@
                 <td>@Html.DisplayFor(modelItem => item.State)</td>
                 <td>
                     @if (item.State != "finished") {
-                        if (item.State != "canceled" || item.State != "in progress") { <button type="button" class="btn btn-success">Démarrer</button> }
+                        if (item.State == "pending") { <button type="button" class="btn btn-success">Démarrer</button> }
                         if (item.State == "pending") { <button type="button" class="btn btn-default">Modifier</button> }
                         if (item.State == "pending" || item.State == "in progress") { <button type="button" class="btn btn-warning">Annuler</button> }
                     }

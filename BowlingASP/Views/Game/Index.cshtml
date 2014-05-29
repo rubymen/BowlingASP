@@ -1,21 +1,38 @@
 ﻿@model IEnumerable<BowlingASP.GameService.game>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Liste des parties";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="container">
     <div class="row">
-    <h2>Parties</h2>
-    @Html.ActionLink("Créer une partie", "Create", "Game", null, new { @class = "btn btn-success" })
+    @if (Model.Count() == 1)
+    {
+        <center><h1>Partie</h1></center>
+    }
+    else
+    {
+        <center><h1>Parties</h1></center>
+    }
 
+    @Html.ActionLink("Créer une partie", "Create", "Game", null, new { @class = "btn btn-success" })
+    
+    <div class="pull-right">
+        <span>Filtrer les parties :</span>
+        @Html.ActionLink("Toutes", "Index", "Game", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Pending", "Filter", new { state = "pending" }, new { @class = "btn btn-info" })
+        @Html.ActionLink("Canceled", "Filter", new { state = "canceled" }, new { @class = "btn btn-info" })
+        @Html.ActionLink("In progress", "Filter", new { state = "in progress" }, new { @class = "btn btn-info" })
+    </div>
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th>#</th>
                     <th>Joueurs</th>
                     <th>Statut</th>
+                    <th>Piste #</th>
                     <th>Action</th>
+                    <th>Date</th>
                 </tr>
             </thead>
             @foreach (var item in Model) {
@@ -31,13 +48,23 @@
                     </ul>
                 </td>
                 <td>@Html.DisplayFor(modelItem => item.State)</td>
+                <td>@Html.DisplayFor(modelItem => item.Lane_id)</td>
                 <td>
+                    @Html.ActionLink("Détails", "Show", new { id = item.Id }, new { @class = "btn btn-success" })
+
                     @if (item.State != "finished") {
-                        if (item.State == "pending") { <button type="button" class="btn btn-success">Démarrer</button> }
-                        if (item.State == "pending") { <button type="button" class="btn btn-default">Modifier</button> }
-                        if (item.State == "pending" || item.State == "in progress") { <button type="button" class="btn btn-warning">Annuler</button> }
+                        if (item.State == "pending") { 
+                            @Html.ActionLink("Démarrer", "Start", new { id = item.Id }, new { @class = "btn btn-success" }) 
+                        }
+                        if (item.State == "pending") { 
+                            @Html.ActionLink("Modifier", "Edit", new { id = item.Id }, new { @class = "btn btn-default" }) 
+                        }
+                        if (item.State == "pending" || item.State == "in progress") { 
+                            @Html.ActionLink("Annuler", "Cancel", new { id = item.Id }, new { @class = "btn btn-warning" }) 
+                        }
                     }
                 </td>
+                <td>@Html.DisplayFor(modelItem => item.Created_at)</td>
             </tr>
             }
         </table>

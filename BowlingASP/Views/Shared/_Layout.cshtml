@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/style.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.9.1.js"></script>
 </head>
 <body>
-    <h1>Gestion Bowling</h1>
+    <center>
+        <h1>Gestion Bowling</h1>
+        <img class="img-circle" src="~/Content/bowling.png" />
+    </center>
     @RenderBody()
     @RenderSection("scripts", required: false)
 </body>

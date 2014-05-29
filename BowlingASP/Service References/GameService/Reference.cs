@@ -651,10 +651,10 @@ namespace BowlingASP.GameService {
         System.Threading.Tasks.Task<BowlingASP.GameService.game> findAsync(string id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceGame/findAll", ReplyAction="http://tempuri.org/IServiceGame/findAllResponse")]
-        System.Collections.Generic.List<BowlingASP.GameService.game> findAll(string number);
+        System.Collections.Generic.List<BowlingASP.GameService.game> findAll(string number, string filter, string param);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceGame/findAll", ReplyAction="http://tempuri.org/IServiceGame/findAllResponse")]
-        System.Threading.Tasks.Task<System.Collections.Generic.List<BowlingASP.GameService.game>> findAllAsync(string number);
+        System.Threading.Tasks.Task<System.Collections.Generic.List<BowlingASP.GameService.game>> findAllAsync(string number, string filter, string param);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServiceGame/addPlayer", ReplyAction="http://tempuri.org/IServiceGame/addPlayerResponse")]
         void addPlayer(string id, BowlingASP.GameService.player p);
@@ -728,12 +728,12 @@ namespace BowlingASP.GameService {
             return base.Channel.findAsync(id);
         }
         
-        public System.Collections.Generic.List<BowlingASP.GameService.game> findAll(string number) {
-            return base.Channel.findAll(number);
+        public System.Collections.Generic.List<BowlingASP.GameService.game> findAll(string number, string filter, string param) {
+            return base.Channel.findAll(number, filter, param);
         }
         
-        public System.Threading.Tasks.Task<System.Collections.Generic.List<BowlingASP.GameService.game>> findAllAsync(string number) {
-            return base.Channel.findAllAsync(number);
+        public System.Threading.Tasks.Task<System.Collections.Generic.List<BowlingASP.GameService.game>> findAllAsync(string number, string filter, string param) {
+            return base.Channel.findAllAsync(number, filter, param);
         }
         
         public void addPlayer(string id, BowlingASP.GameService.player p) {

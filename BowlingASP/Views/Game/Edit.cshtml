@@ -1,7 +1,7 @@
 ﻿@model BowlingASP.GameService.game
 
 @{
-    ViewBag.Title = "Modification d'une partie";
+    ViewBag.Title = "Modification de la partie #"+(Model.Id);
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,9 +12,11 @@
         i = $('form').find('input[type=text]').last().attr('id');
         addInput = function () {
             i++;
-            $(".form-group").append('<div class="col-md-12"><label for="Pseudo' + i + '">Joueur ' + i + '</label><input class="text-box single-line form-control" id="Pseudo' + i + '" name="Pseudo' + i + '" type="text" value="" /><button onclick="deleteInput()" class="btn btn-danger pull-right">Supprimer</button><br /></div>');
+            $(".col-form").append('<label for="Pseudo' + i + '">Joueur ' + i + '</label><input class="text-box single-line form-control" id="Pseudo' + i + '" name="Pseudo' + i + '" type="text" value="" />');
         };
-
+        deleteInput = function () {
+            alert("Suppression");
+        }
     });
 
     var submitForm = function () {
@@ -27,31 +29,41 @@
 </script>
 
 <div class="container">
-    <h2>Modifier une partie</h2>
+    <h2>Modification de la partie #@(Model.Id)</h2>
     @Html.ActionLink("Retour", "Index", "Game", null, new { @class = "btn btn-default" })
 
     @using (Html.BeginForm("Edit", "Game", FormMethod.Post, new { id = "form-id" }))
     {
         @Html.AntiForgeryToken()
         @Html.ValidationSummary(true)
-        <div class="form-group">
+        <div class="row">
             <div class="col-md-12">
-            @{
-                int i = 0;
+                <div class="form-group">
+                    <div class="col-md-12 col-form">
+                        @{
+        int i = 0;
 
-                foreach (BowlingASP.GameService.player player in Model.players)
-                {
-                    <label for="Pseudo@(i)">Joueur @i</label>
-                    <input class="text-box single-line form-control" id="@(i)" name="Pseudo@(i)" type="text" value="@Html.DisplayFor(model => player.Pseudo)" />
-                    @Html.ActionLink("Supprimer", "Delete", "Player", new { id = Html.DisplayFor(model => player.Id) }, new { @class = "btn btn-danger pull-right" })
-                <br />
-                    i++;    
-                }
-           }
+        foreach (BowlingASP.GameService.player player in Model.players)
+        {
+            <label for="Pseudo@(i)">Joueur @i</label>
+                            <div class="input-group">
+                                <input class="text-box single-line form-control" id="@(i)" name="Pseudo@(i)" type="text" value="@Html.DisplayFor(model => player.Pseudo)" />
+                                <div class="input-group-btn">
+                                    @Html.ActionLink("Supprimer", "Delete", "Player", new { id = Html.DisplayFor(model => player.Id) }, new { @class = "btn btn-danger" })
+                                </div>
+                            </div>
+            i++;
+        }
+                        }
+                    </div>
+                </div>
             </div>
         </div>
-
-        <input type="button" value="Ajouter un joueur" onclick="addInput()" class="btn btn-default" />
-        <input type="button" value="Modifier la partie" onclick="submitForm()" class="btn btn-success pull-right" />
+        <div class="row mt">
+            <div class="col-md-12">
+                <input type="button" value="Ajouter un joueur" onclick="addInput()" class="btn btn-default" />
+                <input type="button" value="Modifier la partie" onclick="submitForm()" class="btn btn-success pull-right" />
+            </div>
+        </div>
     }
 </div>

@@ -232,6 +232,7 @@
     <None Include="Service References\PlayerService\ServicePlayer.wsdl" />
     <Content Include="Views\Game\Edit.cshtml" />
     <Content Include="Views\Game\Filter.cshtml" />
+    <Content Include="Views\Game\Show.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

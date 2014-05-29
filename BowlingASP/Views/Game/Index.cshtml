@@ -50,7 +50,7 @@
                 <td>@Html.DisplayFor(modelItem => item.State)</td>
                 <td>@Html.DisplayFor(modelItem => item.Lane_id)</td>
                 <td>
-                    @Html.ActionLink("Détails", "Show", new { id = item.Id }, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Détails", "Show", new { id = item.Id }, new { @class = "btn btn-primary" })
 
                     @if (item.State != "finished") {
                         if (item.State == "pending") { 

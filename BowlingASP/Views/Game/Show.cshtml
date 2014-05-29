@@ -1,0 +1,74 @@
+﻿@model BowlingASP.GameService.game
+
+@{
+    ViewBag.Title = "Partie #"+(Model.Id);
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h2>Partie #@(Model.Id)</h2>
+    @Html.ActionLink("Retour", "Index", "Game", null, new { @class = "btn btn-default" })
+
+    <table class="table table-bordered table-stripped">
+        <thead>
+            <tr>
+                <th>
+                    Joueurs
+                </th>
+                <th>
+                    1
+                </th>
+                <th>
+                    2
+                </th>
+                <th>
+                    3
+                </th>
+                <th>
+                    4
+                </th>
+                <th>
+                    5
+                </th>
+                <th>
+                    6
+                </th>
+                <th>
+                    7
+                </th>
+                <th>
+                    8
+                </th>
+                <th>
+                    9
+                </th>
+                <th>
+                    10
+                </th>
+                <th>
+                    Total
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (BowlingASP.GameService.player player in Model.players)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(model => player.Pseudo)</td>
+                    @foreach (BowlingASP.GameService.turn turn in player.turns)
+                    {
+                    <td class="m-scoretable--td">
+
+                        @foreach (BowlingASP.GameService.@throw t in turn.throws)
+                        {
+                            <div class="m-scoretable--col text-center">@Html.DisplayFor(model => t.number)</div>
+                        }
+                        <br />
+                        <div class="m-scoretable--col--score">@Html.DisplayFor(model => turn.Score)</div>
+                    </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -18,7 +18,9 @@ namespace BowlingASP.Controllers
 
         public ActionResult Show(int id)
         {
-            return View();
+            GameService.ServiceGameClient client = new GameService.ServiceGameClient();
+            GameService.game game = client.find(id.ToString());
+            return View(game);
         }
 
         public ActionResult Filter(String state) 

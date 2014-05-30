@@ -7,7 +7,7 @@
 
 <script>
     var addInput, deleteInput, i;
-  
+  // Comme pour la vue Create. Ajout d'input dynamique et donc de joueurs.
     $(document).ready(function () {
         i = $('form').find('input[type=text]').last().attr('id');
         addInput = function () {
@@ -27,10 +27,10 @@
         }
     };
 </script>
-
 <div class="container">
     <h2>Modification de la partie #@(Model.Id)</h2>
     @Html.ActionLink("Retour", "Index", "Game", null, new { @class = "btn btn-default" })
+    <!-- Formulaire de modification d'une partie. La vue reçoit une partie et place les joueurs de celle-ci dans les input.-->
 
     @using (Html.BeginForm("Edit", "Game", FormMethod.Post, new { id = "form-id" }))
     {
@@ -42,13 +42,14 @@
                     <div class="col-md-12 col-form">
                         @{
         int i = 0;
-
+        <!-- Récupération des joueurs de la partie -->
         foreach (BowlingASP.GameService.player player in Model.players)
         {
             <label for="Pseudo@(i)">Joueur @i</label>
                             <div class="input-group">
                                 <input class="text-box single-line form-control" id="@(i)" name="Pseudo@(i)" type="text" value="@Html.DisplayFor(model => player.Pseudo)" />
                                 <div class="input-group-btn">
+                                    <!-- Possibilité de supprimer un joueur précédemment assigné à une partie. Controlleur Player appelé. -->
                                     @Html.ActionLink("Supprimer", "Delete", "Player", new { id = Html.DisplayFor(model => player.Id) }, new { @class = "btn btn-danger" })
                                 </div>
                             </div>

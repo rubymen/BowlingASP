@@ -8,6 +8,9 @@ namespace BowlingASP.Controllers
 {
     public class GameController : Controller
     {
+        // L'ensemble des actions sont connectées au webservice SOAP : bowling.noip.me 
+
+        // Action Index retournant l'ensemble des parties
         public ActionResult Index()
         {
             GameService.ServiceGameClient client = new GameService.ServiceGameClient();
@@ -16,6 +19,7 @@ namespace BowlingASP.Controllers
             return View(list);
         }
 
+        // Action Show retournant une partie en fonction de son Id
         public ActionResult Show(int id)
         {
             GameService.ServiceGameClient client = new GameService.ServiceGameClient();
@@ -23,12 +27,14 @@ namespace BowlingASP.Controllers
             return View(game);
         }
 
-        public ActionResult Filter(String state) 
+        /* Action Filter permet de filtrer les parties. Elle prend en paramètre le filtre (date ou statut)
+         * et le paramètre souhaité. Retourne une liste de parties.
+         */
+        public ActionResult Filter(String filter, String param) 
         {
             GameService.ServiceGameClient client = new GameService.ServiceGameClient();
             List<GameService.game> list = new List<GameService.game>();
-            list = client.findAll("0", "state", state);
-            
+            list = client.findAll("0", filter, param);
             return View(list);
         }
 
@@ -37,6 +43,9 @@ namespace BowlingASP.Controllers
             return View();
         }
 
+        /* Action Create qui récupère le formulaire de la vue Create.
+         * Il se charge de créer une partie et d'associer des joueurs à celle-ci. 
+         */
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
@@ -65,6 +74,7 @@ namespace BowlingASP.Controllers
             }
         }
         
+        // Action Start et Cancel permettant d'annuler ou de démarrer une partie en fonction de son Id.
         public ActionResult Cancel(int id)
         {
             GameService.ServiceGameClient client = new GameService.ServiceGameClient();
@@ -95,6 +105,7 @@ namespace BowlingASP.Controllers
             return View(game);
         }
 
+        // Action Edit permettant d'éditer et modifier une partie (Suppression de joueurs et modification de leurs pseudos)
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {

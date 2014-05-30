@@ -12,7 +12,8 @@ namespace BowlingASP.Controllers
         {
             return View();
         }
-
+        
+        // Suppression d'un joueur assigné à une partie et redirection sur la vue en cours d'édition.
         public ActionResult Delete(int id) 
         {
             PlayerService.ServicePlayerClient client = new PlayerService.ServicePlayerClient();

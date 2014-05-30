@@ -4,6 +4,24 @@
     ViewBag.Title = "Liste des parties";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<!-- 
+    Cette vue permet l'affichage de l'ensemble des parties avec son ID, les joueurs associés, les actions possibles 
+    en fonction du statut de la partie, la date de création ainsi qu'une recherche par filtre (date et statut).
+-->
+<script>
+    var submitForm = function () {
+        if (document.getElementsByName("date-query-input")[0].value != "") {
+            var reg = new RegExp("^[0-9]{2}[-]{1}[0-9]{2}[-]{1}[0-9]{4}$", "g");
+            if (reg.test(document.getElementsByName("date-query-input")[0].value)) {
+                document.location.href = "/Game/Filter?filter=date&param=" + document.getElementsByName("date-query-input")[0].value;
+            } else {
+                alert("Saisir une date au format : JJ-MM-AAAA");
+            }
+        } else {
+            alert("Saisir une date");
+        }
+    }
+</script>
 <div class="container">
     <div class="row">
     @if (Model.Count() == 1)
@@ -16,13 +34,19 @@
     }
 
     @Html.ActionLink("Créer une partie", "Create", "Game", null, new { @class = "btn btn-success" })
-    
+    <!-- 
+        Boutons permettant la recherche filtrée par statut ou par date (format : JJ-MM-AAAA).
+        Ces actions sont toutes realisées par le controlleur Game.    
+    -->
     <div class="pull-right">
-        <span>Filtrer les parties :</span>
+        <span>Filtrer les parties par statut :</span>
         @Html.ActionLink("Toutes", "Index", "Game", null, new { @class = "btn btn-default" })
-        @Html.ActionLink("Pending", "Filter", new { state = "pending" }, new { @class = "btn btn-info" })
-        @Html.ActionLink("Canceled", "Filter", new { state = "canceled" }, new { @class = "btn btn-info" })
-        @Html.ActionLink("In progress", "Filter", new { state = "in progress" }, new { @class = "btn btn-info" })
+        @Html.ActionLink("Pending", "Filter", new { filter = "state", param = "pending"  }, new { @class = "btn btn-info" })
+        @Html.ActionLink("Canceled", "Filter", new { filter = "state", param = "canceled" }, new { @class = "btn btn-info" })
+        @Html.ActionLink("In progress", "Filter", new { filter = "state", param = "in progress" }, new { @class = "btn btn-info" })
+        <span>Filtrer les parties par date :</span>
+        <input id="date-query-input" placeholder="JJ-MM-AAAA" type="text" class="date-query-input" name="date-query-input" />
+        <button name="date-query-button" class="date-query-button btn btn-info" onclick="submitForm()">Valider</button>
     </div>
         <table class="table table-hover">
             <thead>
@@ -35,6 +59,9 @@
                     <th>Date</th>
                 </tr>
             </thead>
+            <!--
+                Affichage des parties. Le controlleur Game retourne la liste des parties. 
+            -->
             @foreach (var item in Model) {
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.Id)</td>

@@ -20,10 +20,11 @@ namespace BowlingASP
             );
 
             routes.MapRoute(
-                name:"Filter",                                              
-                url: "{controller}/{action}/{state}",
-                defaults: new { controller = "Game", action = "Filter", state = UrlParameter.Optional } 
+                name: "Filter",
+                url: "{controller}/{action}/{filter}/{param}",
+                defaults: new { controller = "Game", action = "Filter", filter = UrlParameter.Optional, param = UrlParameter.Optional }
             );
+
             routes.MapRoute(
                 name: "Delete",
                 url: "{controller}/{action}/{id}",
